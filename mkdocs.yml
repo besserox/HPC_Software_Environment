@@ -1,0 +1,7 @@
+site_name: MkLorum
+site_url: https://luxdem.uni.lu/
+nav:
+  - Home: index.md
+  - About: about.md
+theme: readthedocs
+
