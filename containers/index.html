@@ -1,0 +1,1312 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Xavier Besseron">
+      
+      
+        <link rel="canonical" href="https://besserox.github.io/HPC_Software_Environment/containers/">
+      
+      
+        <link rel="prev" href="../software_installation/">
+      
+      
+        <link rel="next" href="../testing/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>Containers for HPC - Master in HPC - HPC Software Environment - Practicals</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#containers-on-hpc-with-apptainer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Master in HPC - HPC Software Environment - Practicals" class="md-header__button md-logo" aria-label="Master in HPC - HPC Software Environment - Practicals" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Master in HPC - HPC Software Environment - Practicals
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Containers for HPC
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Master in HPC - HPC Software Environment - Practicals" class="md-nav__button md-logo" aria-label="Master in HPC - HPC Software Environment - Practicals" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Master in HPC - HPC Software Environment - Practicals
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../command_line_hpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command Line Environment on HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compilation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilation on HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_profiling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging & Profiling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing Software on HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Containers for HPC
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Containers for HPC
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report" class="md-nav__link">
+    <span class="md-ellipsis">
+      Report
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-0-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 0: Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 0: Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-classroom-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Classroom Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-to-a-compute-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection to a Compute Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-apptainer-on-unilu-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Apptainer on Uni.lu HPC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-getting-started-with-apptainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 1: Getting Started with Apptainer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 1: Getting Started with Apptainer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-the-lolcow-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the lolcow container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-lolcow-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the lolcow container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-lolcow-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update the lolcow container
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-apptainer-with-mpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 2: Apptainer with MPI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 2: Apptainer with MPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-osu-micro-benchmarks-without-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build OSU Micro-Benchmarks without container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-osu-micro-benchmarks-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build OSU Micro-Benchmarks container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-osu-micro-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run the OSU Micro-Benchmarks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-of-the-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison of the approaches
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Report submission
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing on HPC with ReFrame
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open_ondemand/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open OnDemand Web Portal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snakemake/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow on HPC with SnakeMake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_management_reproducibility/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Management & Reproducibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report" class="md-nav__link">
+    <span class="md-ellipsis">
+      Report
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-0-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 0: Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 0: Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-classroom-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Classroom Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-to-a-compute-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection to a Compute Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-apptainer-on-unilu-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Apptainer on Uni.lu HPC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-getting-started-with-apptainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 1: Getting Started with Apptainer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 1: Getting Started with Apptainer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-the-lolcow-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the lolcow container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-lolcow-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the lolcow container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-lolcow-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update the lolcow container
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-apptainer-with-mpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 2: Apptainer with MPI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 2: Apptainer with MPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-osu-micro-benchmarks-without-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build OSU Micro-Benchmarks without container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-osu-micro-benchmarks-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build OSU Micro-Benchmarks container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-osu-micro-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run the OSU Micro-Benchmarks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-of-the-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison of the approaches
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Report submission
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="containers-on-hpc-with-apptainer">Containers on HPC with Apptainer</h1>
+<ul>
+<li>Authors: <a href="https://luxdem.uni.lu/team/xbesseron/">Xavier Besseron</a> (<a href="https://uni.lu/">University of Luxembourg</a>)</li>
+<li>License: ©2024 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></li>
+<li>Date of practical: Tuesday 7th of May 2024</li>
+</ul>
+<p><img alt="Container Ship" class="center" src="../images/containers_banner.jpg" /></p>
+<h2 id="introduction">🔵 Introduction</h2>
+<p>Welcome to our practical session on Containers on HPC with Apptainer.</p>
+<p>In this session, we will explore how containers can help in controlling the computing environment and, to some extent, ensure portability.
+We will also focus on performance issues and see how to leverage the best HPC interconnect within the container.</p>
+<p><img align="right" alt="Apptainer logo" src="../images/logo-apptainer.png" /></p>
+<p>This practical will be using <a href="https://apptainer.org/">Apptainer</a>, a powerful tool that simplifies the process of creating and managing containers
+with a special focus on HPC platforms.
+Apptainer is an open-source project that enables users to package software applications and their dependencies into a single, portable container.
+These containers can then be run on any Linux machine, ensuring that your software behaves the same way, regardless of the environment.</p>
+<h3 id="objectives">Objectives</h3>
+<p>This session will cover 2 parts:</p>
+<ul>
+<li><strong>Getting Started with Apptainer</strong>: You will go through the basic process of building Apptainer images and using them on HPC using the 'Lolcow' example.</li>
+<li><strong>Apptainer with MPI</strong>: You will create and run advanced containers based on MPI and take advantage of the HPC fast network.</li>
+</ul>
+<!-- - **Containers for complex applications**: You will build containers for complex applications using EasyBuild. -->
+
+<p>The exercises will also refer to external documentation and instructions that need to be consulted. The aim is for you to be independent and work in 'real conditions' by finding the information you need to complete the tasks.</p>
+<h3 id="instructions">Instructions</h3>
+<p>This practical is an <strong>individual work</strong> to be carried out on the <strong>Aion cluster</strong> of the HPC platform of the University of Luxembourg.</p>
+<p>It is composed of different elements:</p>
+<ul>
+<li>this page that contains <strong>instructions and questions</strong>;</li>
+<li>the <strong>GitHub Classroom repository</strong> that contains the materials for the exercises;</li>
+<li>the <strong>report</strong> that you have to submit via GitHub Classroom with the rest of the requested documents</li>
+</ul>
+<h3 id="report">Report</h3>
+<p>Together with this tutorial, you need to prepare a short report of your work:</p>
+<ul>
+<li>There is no template, you can start from a blank document. Keep it simple, clear and well-organized.</li>
+<li>Make sure you answer all the questions (cf below), with text, code or screenshots as requested.</li>
+<li>Prepare your report at the same time you're doing the exercises.</li>
+<li>Submit your report as a PDF file to your GitHub Classroom repository and <strong>push it before the deadline</strong>.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Question 0: What? Who? When?</p>
+<p>Indicate at the beginning of your report:</p>
+<ul>
+<li>the title of the practical</li>
+<li>your full name</li>
+<li>your Uni.lu HPC username</li>
+<li>your GitHub username</li>
+<li>the date</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-0-setup">🔵 Part 0: Setup</h2>
+<h3 id="github-classroom-repository">GitHub Classroom Repository</h3>
+<p>Following the same approach as the previous practicals,
+this practical relies on Git Classroom to distribute the extra materials and for the submission of the report.
+To create your copy of the repository, follow the invitation link and accept the assignment:</p>
+<p>Assignment link: <a href="https://classroom.github.com/a/MK1i9iX5">https://classroom.github.com/a/MK1i9iX5</a></p>
+<p>If you need detailed explanations, please refer to the first week's instructions for <a href="../command_line_hpc/#part-3-setting-up-git-and-downloading-the-materials">Setting up Git and downloading the materials</a>.</p>
+<h3 id="connection-to-a-compute-node">Connection to a Compute Node</h3>
+<p>The exercises are to be carried out in interactive mode on a compute node of the <strong>Aion cluster</strong> of the University of Luxembourg.</p>
+<p>As a reminder, here are the steps to access a compute nodes:</p>
+<ul>
+<li>Connect to the access node of the Aion cluster (cf <a href="../command_line_hpc/#connection-to-hpc-access">Connection to HPC Access</a>)</li>
+<li>Find your reservation, if application (cf <a href="../command_line_hpc/#finding-your-reservation">Finding your reservation</a>)</li>
+<li>Connect to a compute node (cf <a href="../command_line_hpc/#connection-to-a-compute-node">Connection to a compute node</a>)</li>
+</ul>
+<details class="tip">
+<summary>Recommended Settings</summary>
+<p>For this practical session, the following options are suggested:</p>
+<ul>
+<li>Partition: <code>interactive</code></li>
+<li>QoS: <code>debug</code></li>
+<li>Reservation: <code>hpc_software_5d07</code> during the Tuesday afternoon session</li>
+<li>Time: 2 hours (or ending before the end of the reservation)</li>
+<li>Node: Two compute nodes</li>
+<li>Tasks: Two tasks (one task per node)</li>
+<li>Cores: 16 cores per task</li>
+</ul>
+</details>
+<p>Your access command line should look like this:</p>
+<div class="highlight"><pre><span></span><code>salloc<span class="w"> </span>-p<span class="w"> </span>interactive<span class="w"> </span>--qos<span class="w"> </span>debug<span class="w"> </span>--reservation<span class="o">=</span>hpc_software_5d07<span class="w"> </span>--time<span class="o">=</span><span class="m">2</span>:00:00<span class="w"> </span>-N<span class="w"> </span><span class="m">2</span><span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>-c<span class="w"> </span><span class="m">16</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Aion cluster will be down from Monday 13/05 until 17/05.</p>
+<p>The HPC platform of the University of Luxembourg will be on maintenance from 13/05 to 17/05.
+<strong>You won't be able to access your data and the computing resources</strong> during this period.</p>
+</div>
+<h3 id="using-apptainer-on-unilu-hpc">Using Apptainer on Uni.lu HPC</h3>
+<p>Apptainer is already installed on the Uni.lu HPC and is available as a module.
+To use it, just load the right module.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Load Apptainer module</span>
+module<span class="w"> </span>load<span class="w"> </span>tools/Apptainer/1.2.1
+<span class="c1"># Workaround bug on Uni.lu HPC platform</span>
+chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>/tmp/
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Workaround for bug on Uni.lu HPC platform</p>
+<p>There is a bug on the Uni.lu HPC platform with the permission of <code>/tmp</code> within a SLURM job.
+This bug prevents some Apptainer containers from being built correctly.</p>
+<p>Until the bug is fixed, it is possible to work around it using the command <code>chmod 777 /tmp/</code> after connecting to the compute node of the SLURM reservation.</p>
+</div>
+<p>In addition, we will make use of the more recent toolchain <code>gompi/2023a</code>. Make sure you update your module path to make it available to you.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update MODULEPATH for toolchain gompi/2023a</span>
+module<span class="w"> </span>use<span class="w"> </span>/work/projects/mhpc-softenv/easybuild/aion-epyc-prod-2023a/modules/all/
+</code></pre></div>
+<hr />
+<h2 id="part-1-getting-started-with-apptainer">🔵 Part 1: Getting Started with Apptainer</h2>
+<p><img align="right" alt="Lolcow output" src="../images/lolcow.png" /></p>
+<p>To get started with Apptainer, we will build the example container provided in the documentation.
+Let's have a look at the example given on the page <a href="https://apptainer.org/docs/user/main/build_a_container.html#building-containers-from-apptainer-definition-files">Building containers from Apptainer definition files</a>.</p>
+<h3 id="building-the-lolcow-container">Building the <em>lolcow</em> container</h3>
+<p>This example creates a <em>lolcow</em> container which is a combination of the <a href="https://en.wikipedia.org/wiki/Cowsay">cowsay</a> and <a href="https://github.com/busyloop/lolcat">lolcat</a> tools.</p>
+<p>The definition file <code>lolcow.def</code> for this container looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Bootstrap</span>:<span class="w"> </span>docker
+<span class="k">From</span>:<span class="w"> </span>ubuntu:<span class="m">20.04</span>
+
+<span class="gh">%post</span>
+<span class="w">    </span>apt-get<span class="w"> </span>-y<span class="w"> </span>update
+<span class="w">    </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>cowsay<span class="w"> </span>lolcat
+
+<span class="gh">%environment</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span>C
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/usr/games:<span class="nv">$PATH</span>
+
+<span class="gh">%runscript</span>
+<span class="w">    </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>cowsay<span class="w"> </span><span class="p">|</span><span class="w"> </span>lolcat
+</code></pre></div>
+<p>This definition file describes the procedure to build the <em>lolcow</em> container:</p>
+<ol>
+<li>Bootstrap the container from the Docker image <code>ubuntu:20.04</code>;</li>
+<li>Install the package <code>cowsay</code> and <code>lolcat</code>;</li>
+<li>Set some environment variables;</li>
+<li>Define a command to run when executing the container.</li>
+</ol>
+<p>A more complete list of section names for the definition is available in the <a href="https://apptainer.org/docs/user/main/definition_files.html">Apptainer documentation</a>.</p>
+<p>From this definition file, you can build the container with this command:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span>lolcow.sif<span class="w"> </span>lolcow.def
+</code></pre></div>
+<p>This command takes the definition file <code>lolcow.def</code> to create a new container image in the file <code>lolcow.sif</code>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Update Question 1</p>
+<p>The <code>apptainer build</code> is currently not working. Instead, you can make a copy of a pre-build image:</p>
+<p><code>cp /work/projects/mhpc-softenv/W11-Containers_on_HPC/lolcow-ORIG.sif .</code></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question 1: Build the <em>lolcow</em> container</p>
+<p>Create the <code>lolcow.def</code> file <del class="critic">and build the container</del> <ins class="critic">and copy the image file <code>/work/projects/mhpc-softenv/W11-Containers_on_HPC/lolcow-ORIG.sif</code> instead</ins>.</p>
+<p>What is the size of the container image? Write down the answer in your report.</p>
+</div>
+<h3 id="using-the-lolcow-container">Using the <em>lolcow</em> container</h3>
+<p>The two main commands to use a container are <code>run</code> and <code>exec</code>. Let's look at the messages with <code>apptainer help run</code> and <code>apptainer help exec</code>:</p>
+<p><img alt="Apptainer Help Run" class="center" src="../images/apptainer_help_run.png" /></p>
+<p><img alt="Apptainer Help Exec" class="center" src="../images/apptainer_help_exec.png" /></p>
+<p>We can now start using the newly created container:</p>
+<ul>
+<li><code>apptainer run lolcow.sif</code> runs the container with its default command.</li>
+<li><code>apptainer exec lolcow.sif date</code> runs the command <code>date</code> in the container environment.</li>
+<li><code>apptainer exec lolcow.sif bash</code> starts in an interactive bash inside the container.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Question 2: Run the <em>lolcow</em> container</p>
+<p>Run the <em>lolcow</em> container with its default command.</p>
+<p>Take a screenshot 📸 and save it to your report.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question 3: Differences between the Aion environment and the container environment</p>
+<p>Run the following commands in the Aion environment (i.e., outside the container) and within the container:</p>
+<ul>
+<li>Current date and time: <code>date</code></li>
+<li>Compute node: <code>hostname</code></li>
+<li>Version of the Linux kernel: <code>uname -a</code></li>
+<li>Name and version of the Linux distribution: <code>cat /etc/os-release</code></li>
+<li>Username: <code>echo $USER</code></li>
+<li>List of users' home directories: <code>ls /home/users/</code></li>
+</ul>
+<p>What are the main differences? Summarize the results in your report.</p>
+</div>
+<h3 id="update-the-lolcow-container">Update the <em>lolcow</em> container</h3>
+<p>For this exercise, you have to update the container definition and rebuild it.</p>
+<div class="admonition danger">
+<p class="admonition-title">Update Question 4</p>
+<p>The <code>apptainer build</code> is currently not working. Instead, you can make a copy of a pre-build image:</p>
+<p><code>cp /work/projects/mhpc-softenv/W11-Containers_on_HPC/lolcow.sif .</code></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question 4: Update the container</p>
+<ol>
+<li>Update the definition file for the <em>lolcow</em> container with the following changes:<ul>
+<li>Use the base image for Ubuntu 24.04</li>
+<li>Set the default command to <code>echo "Hello! My username is $USER." | cowsay | lolcat</code></li>
+<li>Add a new label <code>Author</code> with your first and last name. Check the <a href="https://apptainer.org/docs/user/main/definition_files.html#labels">documentation for the <code>%labels</code> section</a> to find help related to the syntax.</li>
+</ul>
+</li>
+<li><del class="critic">Build the updated container</del> <ins class="critic">and copy the image file <code>/work/projects/mhpc-softenv/W11-Containers_on_HPC/lolcow.sif</code> instead</ins>.</li>
+<li>Run the container with <code>apptainer run</code> and check its metadata with <code>apptainer inspect</code>.</li>
+</ol>
+<p>In your report:</p>
+<ul>
+<li>Add the updated definition of the <em>lolcow</em> container to the <code>lolcow</code> directory of your GitHub Classroom repository.</li>
+<li>Take a screenshot 📸 of the output of the <code>run</code> and <code>inspect</code> commands, and save it to your report.</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-2-apptainer-with-mpi">🔵 Part 2: Apptainer with MPI</h2>
+<p>For this part, we will build an Apptainer container for the <a href="https://mvapich.cse.ohio-state.edu/benchmarks/">OSU Micro-Benchmarks</a>.
+As we have seen <a href="../software_installation/#osu-micro-benchmarks">previously</a>, they are a collection of programs designed
+to measure the performance of various communication libraries, including MPI, OpenSHMEM, UPC++ and NCCL.</p>
+<p>These benchmarks measure the low-level performance of fundamental communication patterns:</p>
+<ul>
+<li><strong>Point-to-point</strong>: Direct communication between two processes.</li>
+<li><strong>Collective</strong>: Communication involving multiple processes (e.g., broadcast, reduce).</li>
+<li><strong>One-sided</strong>: One process directly accessing the memory of another without explicit involvement from the remote process.</li>
+</ul>
+<p>We will use this benchmark to measure and compare the performance of the MPI communication with and without the use of containers.</p>
+<h3 id="build-osu-micro-benchmarks-without-container">Build OSU Micro-Benchmarks without container</h3>
+<p>As a baseline for our comparison, we will build a native version of the OSU Micro-Benchmarks based on the <code>gompi/2023a</code> toolchain of the Aion cluster.
+To make things easier, an EasyBuild recipe for the latest OSU Micro-Benchmarks 7.4 is available in the <code>omb_mpi</code> directory of your GitHub Classroom repository.</p>
+<p>Follow these steps to build the latest OSU Micro-Benchmarks on Aion:</p>
+<ol>
+<li>Load the EasyBuild module (version 4.9.0 or 4.9.1, do <code>module use ~/.local/easyconfig/modules/all</code> if necessary);</li>
+<li>Check your version of EasyBuild;</li>
+<li>Build OSU Micro-Benchmarks 7.4 with toolchain <code>gompi/2023a</code> using the EasyConfig file available in <code>omb_mpi</code> directory;</li>
+<li>Load the newly created module for OSU Micro-Benchmarks 7.4;</li>
+<li>Run the command <code>srun -n 2 -c 1 osu_hello</code> to check that it works.</li>
+</ol>
+<div class="admonition question">
+<p class="admonition-title">Question 5: Install OSU Micro-Benchmarks 7.4 for toolchain <code>gompi/2023a</code></p>
+<p>In your report:</p>
+<ul>
+<li>Write down the commands you have used to perform the 5 steps above.</li>
+<li>Take a screenshot 📸 of the output of these commands, and add it to your report.</li>
+</ul>
+</div>
+<h3 id="build-osu-micro-benchmarks-container">Build OSU Micro-Benchmarks container</h3>
+<p>We will now build a container image for the OSU Micro-Benchmarks.
+To maximize the compatibility with the OpenMPI of the Aion cluster and to simplify the MPI binding,
+this image will be based on the same Linux distribution (Red Hat Enterprise Linux 8) and the same version of MPI.</p>
+<p>A definition file <code>omb.def</code> is already available for you in the <code>omb_mpi</code> directory of your Github Classroom repository.
+This definition file is incomplete and you need to update it to set:</p>
+<ul>
+<li>the version of OpenMPI to match the one of the toolchain <code>gompi/2023a</code> available on the Aion cluster;</li>
+<li>the version of OSU Micro-Benchmarks to match the one that you installed previously.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Update Question 6</p>
+<p>The <code>apptainer build</code> is currently not working. Instead, you can make a copy of a pre-build image:</p>
+<p><code>cp /work/projects/mhpc-softenv/W11-Containers_on_HPC/omb.sif .</code></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question 6: Build OSU Micro-Benchmarks container</p>
+<ul>
+<li>Edit the definition file <code>omb.def</code> and the variables <code>OMPI_VERSION</code> and <code>OMB_VERSION</code> to the correct version.</li>
+<li><del class="critic">Build the container <code>omb.sif</code> using your updated definition file <code>omb.def</code>. (The build should take less than 5 minutes.)</del></li>
+<li><ins class="critic">Copy the image file <code>/work/projects/mhpc-softenv/W11-Containers_on_HPC/omb.sif</code> instead</ins></li>
+<li>If the container works, commit the change of the <code>omb.def</code> file to your GitHub Classroom repository.</li>
+</ul>
+</div>
+<!--     - Test the image with the command `srun -n 1 -c 1 apptainer run omb.sif`. -->
+
+<h3 id="run-the-osu-micro-benchmarks">Run the OSU Micro-Benchmarks</h3>
+<p>We will now compare the performance of the different builds of the OSU Micro-Benchmarks and the different execution models.
+We consider three configurations to compare:</p>
+<ul>
+<li>OSU Micro-Benchmarks compiled with toolchain <code>gompi/2023a</code> without container: We will call it <strong>Native</strong>.</li>
+<li>OSU Micro-Benchmarks from the container executed with the <a href="https://apptainer.org/docs/user/latest/mpi.html#hybrid-model">Hybrid Model</a>: We will call it <strong>Apptainer Hybrid</strong>.</li>
+<li>OSU Micro-Benchmarks from the container executed with the <a href="https://apptainer.org/docs/user/latest/mpi.html#bind-model">Bind Model</a>: We will call it <strong>Apptainer Bind</strong>.</li>
+</ul>
+<p>In addition, we will consider two performance metrics:</p>
+<ul>
+<li>The inter-node MPI latency, measured using the command <code>osu_latency</code> between two distinct compute nodes;</li>
+<li>The inter-node MPI bandwidth, measured using the command <code>osu_bw</code> between two distinct compute nodes;</li>
+</ul>
+<p>Before starting, let's make sure we use the correct <code>srun</code> command to</p>
+<p>To measure the <strong>inter-node</strong> performance, we want to use two distinct compute nodes.
+For that, we will use the following SLURM options for <code>srun</code>:</p>
+<ul>
+<li><code>-N 2</code>: Use two compute nodes</li>
+<li><code>-n 2</code>: Start two tasks (or processes)</li>
+<li><code>-c 1</code>: Use one core per task</li>
+</ul>
+<p>Thus, the <code>srun</code> command line looks like this: <code>srun -N 2 -n 2 -c 1 COMMAND</code>.
+We can test it on the <code>hostname</code> command to make sure that the processes are started on two different compute nodes.
+The output should look like this.</p>
+<p><img alt="srun in internode configuration" class="center" src="../images/srun_internode.png" /></p>
+<p>We can now execute the performance tests for the three configurations. Let's start with the latency.</p>
+<div class="highlight"><pre><span></span><code># Run OMB latency with &#39;Native&#39; configuration
+srun -N 2 -n 2 -c 1 osu_latency | tee omb_latency_native.txt
+
+# Run OMB latency with &#39;Apptainer Hybrid&#39; configuration
+srun -N 2 -n 2 -c 1 apptainer exec omb.sif osu_latency | tee omb_latency_hybrid.txt
+
+# Run OMB latency with &#39;Apptainer Bind&#39; configuration
+BIND_OPTION=&quot;--bind /work/projects/mhpc-softenv/easybuild/aion-epyc-prod-2023a/software/OpenMPI/4.1.5-GCC-12.3.0:/opt/ompi,/work/projects/mhpc-softenv/easybuild/aion-epyc-prod-2023a/software,/usr/lib64,/etc/libibverbs.d&quot;
+srun -N 2 -n 2 -c 1 apptainer exec ${BIND_OPTION} omb.sif osu_latency | tee omb_latency_bind.txt
+</code></pre></div>
+<p>These commands above save the output of each execution in different output files.</p>
+<details class="info">
+<summary>What is the <strong>bind</strong> option?</summary>
+<p>The 'Apptainer Bind' configuration relies on the <code>--bind</code> option of Apptainer to inject the MPI library of Aion inside the container.
+This allows for the application to benefit from the most optimized MPI configuration.</p>
+<p>In this case, the bind option performs many bindings:</p>
+<ul>
+<li>The directory <code>/work/projects/mhpc-softenv/easybuild/aion-epyc-prod-2023a/software/OpenMPI/4.1.5-GCC-12.3.0</code> of Aion is bound to the <code>/opt/mpi</code> directory in the container. That effectively replaces the MPI installed in the container by the MPI of Aion.</li>
+<li>The directory <code>/work/projects/mhpc-softenv/easybuild/aion-epyc-prod-2023a/software</code> of Aion is bound to the directory with the same name inside the container. This is necessary to provide some of the dependencies required by the OpenMPI of Aion like <code>hwloc</code>, <code>libpciaccess</code> and many others.</li>
+<li>Similarly, the directory <code>/usr/lib64</code> of Aion is bound to the directory with the same name inside the container. This is necessary to provide other system libraries that are not installed in the container but that are necessary for the OpenMPI of Aion and its dependencies.</li>
+<li>The directory <code>/etc/libibverbs.d</code> is bound to the directory with the same name inside the container. It provides configuration information related to the InfiniBand driver to be used for the Aion interconnect hardware.</li>
+</ul>
+</details>
+<p>Now, it is your turn to write and execute the commands to measure the inter-node MPI bandwidth with the <code>osu_bw</code> benchmark with the three configurations.
+Save the output of the measurement in output files named <code>omb_bw_XXXX.txt</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Question 7: Performance Measurements</p>
+<p>Run the performance measurements listed above. You should have 2 metrics and 3 configurations.</p>
+<p>Save the output files in the <code>omb_mpi</code> directory and add them to your GitHub Classroom repository.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question 8: Performance Plots</p>
+<p>Create graphic plots to show and compare the results of your performance measurements:</p>
+<ul>
+<li>One plot for inter-node latency comparing the 3 configurations;</li>
+<li>One plot for inter-node bandwidth comparing the 3 configurations;</li>
+</ul>
+<p>You can use the tool of your choice, on the HPC or on your laptop, to generate the plots (GNUplot, R ggplot, Python Matplotlib, ...).
+Please follow these recommendations:</p>
+<ul>
+<li>Use a log scale on the X and Y axes to make the data more visible and easier to compare at the different scales.</li>
+<li>Set proper labels, keys and titles to help read the plots.</li>
+</ul>
+<p>Save the plot files as PDF or PNG in the <code>omb_mpi</code> directory and add them to your GitHub Classroom repository.</p>
+</div>
+<h3 id="comparison-of-the-approaches">Comparison of the approaches</h3>
+<div class="admonition question">
+<p class="admonition-title">Question 9: Performance Comparison</p>
+<p>In your report, describe and compare the latency and bandwidth performance of the different configurations.
+Which approach(es) are the best in terms of performance?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question 10: Qualitative Comparison</p>
+<p>What are the pros and cons of the different approaches?
+In your report, answer in a few sentences considering different aspects:</p>
+<ul>
+<li>Installation or creation of the container</li>
+<li>Usage and portability on other HPC machines</li>
+<li>Performance</li>
+<li>For MPI or non-MPI applications</li>
+</ul>
+</div>
+<!--
+-------------------------
+
+## 🔵 Part 3: Containers for complex applications
+-->
+
+<hr />
+<h2 id="report-submission">🔵 Report submission</h2>
+<p>Don't forget to add and push all the required files to your GitHub Classroom repository:</p>
+<ul>
+<li>the requested files;</li>
+<li>the report, including the answers to all the questions and the screenshots.</li>
+</ul>
+<p>Don't add any other files and directories (for example, build directories, executables, Makefile, etc.).
+Finalize your report and save it as a PDF (no other format allowed!) in the <code>report</code> sub-directory of your GitHub Classroom repository.</p>
+<details class="tip">
+<summary>Uploading your report</summary>
+<p>You don't need to copy it to the HPC to upload your report. Instead, you can use the <strong>Add file</strong> button directly on the GitHub webpage.</p>
+</details>
+<div class="admonition danger">
+<p class="admonition-title">Files Submission</p>
+<p>Your files and report are considered submitted once they are pushed to your repository.</p>
+<p>Check your GitHub repository online to make sure:
+<a href="https://github.com/MHPC-HPCSoftwareEnvironment/w11-containers-on-hpc-XXX">https://github.com/MHPC-HPCSoftwareEnvironment/w11-containers-on-hpc-XXX</a></p>
+<p>Passed the deadline at <strong>13/05/2024 08h00</strong> you won't be able to push anymore.</p>
+</div>
+<hr />
+<h2 id="additional-resources">🔵 Additional Resources</h2>
+<ul>
+<li><a href="https://apptainer.org/docs/user/latest/quick_start.html">Apptainer Quick Start</a></li>
+<li><a href="https://apptainer.org/docs/user/latest/">Apptainer User Guide</a></li>
+<li><a href="https://apptainer.org/docs/user/main/definition_files.html">Apptainer Definition Files</a></li>
+<li><a href="https://apptainer.org/docs/user/main/mpi.html">Apptainer and MPI applications</a></li>
+<li><a href="https://ciq.com/blog/a-new-approach-to-mpi-in-apptainer/">A New Approach to MPI in Apptainer (CIQ Blog)</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../js/open_in_new_tab.js"></script>
+      
+    
+  </body>
+</html>

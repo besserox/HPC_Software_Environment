@@ -1,0 +1,761 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Xavier Besseron">
+      
+      
+        <link rel="canonical" href="https://besserox.github.io/HPC_Software_Environment/open_ondemand/">
+      
+      
+        <link rel="prev" href="../testing/">
+      
+      
+        <link rel="next" href="../snakemake/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>Open OnDemand Web Portal - Master in HPC - HPC Software Environment - Practicals</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#open-ondemand-web-portal-for-hpc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Master in HPC - HPC Software Environment - Practicals" class="md-header__button md-logo" aria-label="Master in HPC - HPC Software Environment - Practicals" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Master in HPC - HPC Software Environment - Practicals
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Open OnDemand Web Portal
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Master in HPC - HPC Software Environment - Practicals" class="md-nav__button md-logo" aria-label="Master in HPC - HPC Software Environment - Practicals" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Master in HPC - HPC Software Environment - Practicals
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../command_line_hpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command Line Environment on HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compilation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilation on HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_profiling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging & Profiling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing Software on HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers for HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing on HPC with ReFrame
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Open OnDemand Web Portal
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Open OnDemand Web Portal
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-connection-and-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 1: Connection and Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-jupyter-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 2: Jupyter Notebook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-desktop-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 3: Desktop Session
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snakemake/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow on HPC with SnakeMake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_management_reproducibility/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Management & Reproducibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-connection-and-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 1: Connection and Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-jupyter-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 2: Jupyter Notebook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-desktop-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 3: Desktop Session
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="open-ondemand-web-portal-for-hpc">Open OnDemand Web Portal for HPC</h1>
+<ul>
+<li>Authors: <a href="https://luxdem.uni.lu/team/xbesseron/">Xavier Besseron</a> (<a href="https://uni.lu/">University of Luxembourg</a>)</li>
+<li>License: ©2024 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></li>
+<li>Date of practical: Tuesday 21st of May 2024</li>
+</ul>
+<p><img alt="Gate" class="center" src="../images/gate_banner.jpg" /></p>
+<h2 id="introduction">🔵 Introduction</h2>
+<p>Welcome to our practical session on the <strong>Open OnDemand Web Portal</strong> for the HPC of the University of Luxembourg.</p>
+<p><img align="right" alt="Open OnDemand logo" src="../images/logo-ood.png" /></p>
+<p>Web portals for HPC serve as user-friendly interfaces that allow researchers, students, and industry professionals to interact with powerful computing resources. 
+In this session, you will have a quick overview and explore the Open OnDemand portal of the University of Luxembourg.</p>
+<p><a href="https://openondemand.org/">Open OnDemand</a> is a powerful web portal that provides remote access to high-performance computing (HPC) resources. </p>
+<ul>
+<li>
+<p><strong>Overview of Open OnDemand</strong>:</p>
+<ul>
+<li>Open OnDemand connects users to supercomputers via the web.</li>
+<li>It empowers students, researchers, and industry professionals by offering an alternative to the command-line interface.</li>
+<li>Users can access supercomputers from anywhere, on any device, with zero installation required.</li>
+<li>It’s free, open source, and compatible with any device.</li>
+</ul>
+</li>
+<li>
+<p><strong>Features</strong>:</p>
+<ul>
+<li>Interactive Desktop and Applications: Run applications like MATLAB, ANSYS, Jupyter Notebook, and R Studio Server.</li>
+<li>File Management: Manage files through the web interface.</li>
+<li>Job Submission and Monitoring: Submit and monitor HPC jobs.</li>
+<li>Class-Specific Applications: Custom applications for specific courses.</li>
+<li>Actively Developed and Supported: Funded by the National Science Foundation (NSF) and widely used worldwide.</li>
+</ul>
+</li>
+</ul>
+<h3 id="objectives">Objectives</h3>
+<p>This session will cover 3 parts:</p>
+<ul>
+<li><strong>Overview of the portal</strong>: You will connect to the portal and get familiar with the interface.</li>
+<li><strong>Jupyter Notebook</strong>: You will start and run a Jupyter Notebook on the Uni.lu HPC using the Open OnDemand portal.</li>
+<li><strong>Desktop Session</strong>: You will start a Desktop session and interact with a graphical desktop environment.</li>
+</ul>
+<h3 id="instructions">Instructions</h3>
+<p>This practical is an <strong>individual work</strong> to be carried out on the <strong>Aion cluster</strong> of the HPC platform of the University of Luxembourg.</p>
+<p>For this practical, this is no question or report, simply follow the <strong>instructions</strong> on this page.</p>
+<hr />
+<h2 id="part-1-connection-and-overview">🔵 Part 1: Connection and Overview</h2>
+<p>The Open OnDemand portal of the Uni.lu HPC can be accessed using your web browser at this address: <a href="https://hpc-portal.uni.lu/"><strong>https://hpc-portal.uni.lu/</strong></a></p>
+<div class="admonition info">
+<p class="admonition-title">Access to the portal</p>
+<p>The Open OnDemand portal of the Uni.lu HPC is an internal service and is only accessible from within the network of the University.</p>
+</div>
+<p>When connecting, you will be asked to authenticate using the username and password of your HPC account.</p>
+<p><img alt="Open OnDemand Login" class="center" src="../images/ood_login.png" /></p>
+<p>Once connected, the top menu gives you access to the different functionality of the portal:</p>
+<ul>
+<li><strong>Files</strong>: Access to the files;</li>
+<li><strong>Jobs</strong>: Visualize the jobs started from the portal;</li>
+<li><strong>Clusters</strong>: Open a Shell access (via your web browser) to the HPC clusters;</li>
+<li><strong>Interactive Apps</strong>: Start a new interactive application on the HPC;</li>
+<li><strong>My Interactive Sessions</strong>: Visualize the interactive sessions started from the portal.</li>
+</ul>
+<p><img alt="Open OnDemand Menu" class="center" src="../images/ood_menu.png" /></p>
+<hr />
+<h2 id="part-2-jupyter-notebook">🔵 Part 2: Jupyter Notebook</h2>
+<p>For this part, minimal guidance is provided. Instead, you will have to explore yourself the portal to achieve the task.</p>
+<p>Your objective is to:</p>
+<ol>
+<li>Start a Jupyter Notebook session on the Aion cluster.<ul>
+<li>For the <code>Virtualenv</code> setting, you can use a new name like <code>mhpc_venv</code>.</li>
+</ul>
+</li>
+<li>Connect to the Jupyter Notebook once the job is running.</li>
+<li>Upload this example notebook <a href="../files/Lorenz.ipynb">Lorenz.ipynb</a></li>
+<li>Run the notebook successfully.<ul>
+<li>You will need to fix the first cell of the notebook to install the other missing packages.</li>
+</ul>
+</li>
+<li>To properly end your Jupyter session, make sure you do <code>File -&gt; Shutdown</code>. This will terminate your HPC job.</li>
+</ol>
+<p><img alt="Jupyter Notebook" class="center" src="../images/ood_jupyter_lorenz.png" /></p>
+<hr />
+<h2 id="part-3-desktop-session">🔵 Part 3: Desktop Session</h2>
+<p>For this part, minimal guidance is provided. Instead, you will have to explore yourself the portal to achieve the task.</p>
+<p>Your objective is to:</p>
+<ol>
+<li>Start a Desktop session on the Aion cluster.</li>
+<li>Connect to the Desktop session once the job is running.</li>
+<li>Open a terminal and check the hostname to make sure you're connected to a compute node.</li>
+<li>Open a file manager to navigate through your files on the HPC</li>
+<li>Open the MATLAB graphical interface:<ul>
+<li>Open a terminal</li>
+<li>Search and load the MATLAB module</li>
+<li>Run the <code>matlab</code> command </li>
+</ul>
+</li>
+<li>To properly end your Desktop session, make sure to go to the top-left menu and do <code>Applications -&gt; Log Out</code>. This will terminate your HPC job.</li>
+</ol>
+<p><img alt="Desktop Session with Matlab" class="center" src="../images/ood_desktop_matlab.png" /></p>
+<!--
+-------------------------
+
+## 🔵 Part 4: Shell Access
+-->
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../js/open_in_new_tab.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1850 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Xavier Besseron">
+      
+      
+        <link rel="canonical" href="https://besserox.github.io/HPC_Software_Environment/data_management_reproducibility/">
+      
+      
+        <link rel="prev" href="../snakemake/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>Data Management & Reproducibility - Master in HPC - HPC Software Environment - Practicals</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-management-and-reproducibility" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Master in HPC - HPC Software Environment - Practicals" class="md-header__button md-logo" aria-label="Master in HPC - HPC Software Environment - Practicals" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Master in HPC - HPC Software Environment - Practicals
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Management & Reproducibility
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Master in HPC - HPC Software Environment - Practicals" class="md-nav__button md-logo" aria-label="Master in HPC - HPC Software Environment - Practicals" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Master in HPC - HPC Software Environment - Practicals
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../command_line_hpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command Line Environment on HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compilation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilation on HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_profiling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging & Profiling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing Software on HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers for HPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing on HPC with ReFrame
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open_ondemand/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open OnDemand Web Portal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snakemake/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow on HPC with SnakeMake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Data Management & Reproducibility
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Data Management & Reproducibility
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report" class="md-nav__link">
+    <span class="md-ellipsis">
+      Report
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-0-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 0: Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 0: Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-classroom-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Classroom Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-to-a-compute-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection to a Compute Node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-storage-and-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 1: Storage and Quotas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 1: Storage and Quotas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filesystem-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filesystem Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filesystem-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filesystem Quotas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directories-and-file-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directories and File Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-data-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 2: Data Integrity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 2: Data Integrity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sha-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      SHA hash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      MD5 hash
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-data-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 3: Data Encryption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 3: Data Encryption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpg" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPG
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encryption-with-a-passphrase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption with a passphrase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gpg-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using GPG keys
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gocryptfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gocryptfs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gocryptfs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-load-the-gocryptfs-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Load the gocryptfs module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-two-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create two folders:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-initialize-the-crypt-folder-with-a-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Initialize the crypt folder with a password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mount-the-crypt-folder-into-the-view-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Mount the crypt folder into the view folder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-add-files-to-the-view-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Add files to the view folder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-unmount-the-view-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Unmount the view folder
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-reproducibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 4: Reproducibility
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 4: Reproducibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prng-seed-initialisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      (P)RNG seed initialisation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locale
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precision-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precision errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Report submission
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Additional Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Additional Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hashing-algorithms-and-checksums" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hashing Algorithms and Checksums
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources-for-the-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources for the practical
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report" class="md-nav__link">
+    <span class="md-ellipsis">
+      Report
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-0-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 0: Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 0: Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-classroom-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Classroom Repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-to-a-compute-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection to a Compute Node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-storage-and-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 1: Storage and Quotas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 1: Storage and Quotas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filesystem-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filesystem Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filesystem-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filesystem Quotas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directories-and-file-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directories and File Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-data-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 2: Data Integrity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 2: Data Integrity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sha-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      SHA hash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      MD5 hash
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-data-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 3: Data Encryption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 3: Data Encryption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpg" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPG
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encryption-with-a-passphrase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption with a passphrase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gpg-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using GPG keys
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gocryptfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gocryptfs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gocryptfs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-load-the-gocryptfs-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Load the gocryptfs module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-two-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create two folders:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-initialize-the-crypt-folder-with-a-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Initialize the crypt folder with a password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mount-the-crypt-folder-into-the-view-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Mount the crypt folder into the view folder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-add-files-to-the-view-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Add files to the view folder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-unmount-the-view-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Unmount the view folder
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-reproducibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Part 4: Reproducibility
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Part 4: Reproducibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prng-seed-initialisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      (P)RNG seed initialisation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locale
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precision-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precision errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Report submission
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔵 Additional Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔵 Additional Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hashing-algorithms-and-checksums" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hashing Algorithms and Checksums
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources-for-the-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources for the practical
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="data-management-and-reproducibility">Data Management and Reproducibility</h1>
+<ul>
+<li>Authors: Marek Ostaszewski (<a href="https://uni.lu/">University of Luxembourg</a>), <a href="https://luxdem.uni.lu/team/xbesseron/">Xavier Besseron</a> (<a href="https://uni.lu/">University of Luxembourg</a>)</li>
+<li>License: ©2024 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></li>
+<li>Date of practical: Tuesday 30th of April 2024</li>
+<li>Adapted from UL HPC Tutorials: Thanks to Valentin Plugaru, Sarah Peters, the LCSB data stewards and R3 teams for the initial versions!</li>
+</ul>
+<h2 id="introduction">🔵 Introduction</h2>
+<p>Welcome to our practical session on Data Management &amp; Reproducibility. 
+When using HPC platforms, mastering these skills is not just beneficial, but essential.
+You will get to practice basic techniques ensuring the integrity and confidentiality of your data and allowing your results to be accurately reproduced by others. This is not just about making your life easier; it’s about enhancing the credibility and integrity of your work.</p>
+<h3 id="objectives">Objectives</h3>
+<p>This session will cover 4 parts:</p>
+<ul>
+<li><strong>Filesystem Quotas</strong>: Learn how to check the filesystem usages and quotas on the Uni.lu HPC platform.</li>
+<li><strong>Checksum</strong>: See how hashing algorithms can be used to check the integrity of your data.</li>
+<li><strong>Encryption</strong>: Practice encryption tools that you can use to protect your confidential data.</li>
+<li><strong>Reproducibility</strong>: Get to know typical reproducibility issues and learn how to address them.</li>
+</ul>
+<p>The exercises will also refer to external documentation and instructions that need to be consulted. The aim is for you to be independent and work in 'real conditions' by finding the information you need to complete the tasks.</p>
+<h3 id="instructions">Instructions</h3>
+<p>This practical is an <strong>individual work</strong> to be carried out on the <strong>Aion cluster</strong> of the HPC platform of the University of Luxembourg.</p>
+<p>It is composed of different elements:</p>
+<ul>
+<li>this page that contains <strong>instructions and questions</strong>;</li>
+<li>the <strong>GitHub Classroom repository</strong> that contains the materials for the exercises;</li>
+<li>the <strong>report</strong> that you have to submit via GitHub Classroom with the rest of the requested documents</li>
+</ul>
+<h3 id="report">Report</h3>
+<p>Together with this tutorial, you need to prepare a short report of your work:</p>
+<ul>
+<li>There is no template, you can start from a blank document. Keep it simple, clear and well-organized.</li>
+<li>Make sure you answer all the questions (cf below), with text, code or screenshots as requested.</li>
+<li>Prepare your report at the same time you're doing the exercises.</li>
+<li>Submit your report as a PDF file to your GitHub Classroom repository and <strong>push it before the deadline</strong>.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Question 0: What? Who? When?</p>
+<p>Indicate at the beginning of your report:</p>
+<ul>
+<li>the title of the practical</li>
+<li>your full name</li>
+<li>your Uni.lu HPC username</li>
+<li>your GitHub username</li>
+<li>the date</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-0-setup">🔵 Part 0: Setup</h2>
+<h3 id="github-classroom-repository">GitHub Classroom Repository</h3>
+<p>Following the same approach as the previous practicals,
+this practical relies on Git Classroom to distribute the extra materials and for the submission of the report.
+To create your copy of the repository, follow the invitation link and accept the assignment:</p>
+<p>Assignment link: <a href="https://classroom.github.com/a/gk3w_4Qr">https://classroom.github.com/a/gk3w_4Qr</a></p>
+<p>If you need detailed explanations, please refer to the first week's instructions for <a href="../command_line_hpc/#part-3-setting-up-git-and-downloading-the-materials">Setting up Git and downloading the materials</a>.</p>
+<h3 id="connection-to-a-compute-node">Connection to a Compute Node</h3>
+<p>The exercises are to be carried out in interactive mode on a compute node of the <strong>Aion cluster</strong> of the University of Luxembourg.</p>
+<p>As a reminder, here are the steps to access a compute nodes:</p>
+<ul>
+<li>Connect to the access node of the Aion cluster (cf <a href="../command_line_hpc/#connection-to-hpc-access">Connection to HPC Access</a>)</li>
+<li>Find your reservation, if application (cf <a href="../command_line_hpc/#finding-your-reservation">Finding your reservation</a>)</li>
+<li>Connect to a compute node (cf <a href="../command_line_hpc/#connection-to-a-compute-node">Connection to a compute node</a>)</li>
+</ul>
+<details class="tip">
+<summary>Recommended Settings</summary>
+<p>For this practical session, the following options are suggested:</p>
+<ul>
+<li>Partition: <code>interactive</code></li>
+<li>QoS: <code>debug</code></li>
+<li>Reservation: <code>hpc_software_4d30</code> during the Tuesday afternoon session</li>
+<li>Time: 2 hours (or ending before the end of the reservation)</li>
+<li>Node: One compute node</li>
+<li>Tasks: One task</li>
+<li>Cores: 32 cores per task</li>
+</ul>
+</details>
+<p>Your access command line should look like this:</p>
+<div class="highlight"><pre><span></span><code>salloc<span class="w"> </span>-p<span class="w"> </span>interactive<span class="w"> </span>--qos<span class="w"> </span>debug<span class="w"> </span>--reservation<span class="o">=</span>hpc_software_4d30<span class="w"> </span>--time<span class="o">=</span><span class="m">2</span>:00:00<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span><span class="m">32</span>
+</code></pre></div>
+<hr />
+<h2 id="part-1-storage-and-quotas">🔵 Part 1: Storage and Quotas</h2>
+<h3 id="filesystem-usage">Filesystem Usage</h3>
+<p>On Linux, filesystem usage is measured with two metrics:</p>
+<ul>
+<li><strong>Space usage</strong>: This refers to the amount of disk space that is being used by the files and directories. It is usually measured in bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), or terabytes (TB). Space usage tells you how much of your total disk capacity is occupied and how much is still available for storing additional data.</li>
+<li><strong>Inodes</strong>: This metric refers to the number of inodes being used. An inode is a data structure that stores metadata about a file or directory. Each file or directory consumes one inode. The total number of inodes is fixed when the filesystem is created, and running out of inodes means no new files can be created, even if there is still space left on the disk. Inode usage is typically measured by the count of inodes.</li>
+</ul>
+<p>Together, these metrics give a comprehensive view of the filesystem’s health and capacity. While space usage is often what users notice first (as it directly affects how much data they can store), inode usage is equally important for the filesystem’s ability to manage files and directories. </p>
+<p>The <code>df</code> command displays a short report of the storage usage:
+- By default, <code>df</code> reports the disk space usage of each storage (or mount filesystem). 
+- With the <code>-h</code>/<code>-H</code> options, <code>df</code> reports the usage using human-readable units.
+- Using the <code>-i</code> option, it reports the number of inodes.</p>
+<div class="admonition question">
+<p class="admonition-title">Question 1: Difference between the options <code>-h</code> and <code>-H</code> of <code>df</code></p>
+<p>What is the difference between the options the options <code>-h</code> and <code>-H</code> of <code>df</code>?</p>
+<p>You can find the answer on the manpage, cf <code>man df</code> or <a href="https://man.cx/">online</a>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question 2: Available storage on Uni.lu HPC</p>
+<p>What is the <strong>total available space and inodes</strong> for the users' home directories of the Aion cluster?</p>
+<p>Note: Run the command <code>ls -l /home/users</code> to understand on which filesystem are located the users' home directories.</p>
+</div>
+<h3 id="filesystem-quotas">Filesystem Quotas</h3>
+<p>Because the HPC supercomputers are shared between multiple users, the storage usage is usually limited for each user using <strong>quotas</strong>.</p>
+<p>On the Uni.lu HPC platform, the <code>df-ulhpc</code> command can be used to know your actual usage and your quota limitations.
+It shows a list of directories on which quotas are applied, how much space you are currently using, your soft quota, hard quota and the grace period.
+Once your usage reaches the soft quota you can still write data until the grace period expires (7 days) or you reach the hard quota. 
+After you reach the end of the grace period or the hard quota, you have to reduce your usage to below the soft quota to be able to write data again.</p>
+<details class="info">
+<summary><code>df-ulhpc</code> is only available on the access nodes</summary>
+<p>The command <code>df-ulhpc</code> is only available on the access nodes. Open a new connection to Aion to try it.</p>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question 3: Quotas on Uni.lu HPC</p>
+<p>Answer these questions in your report:</p>
+<ul>
+<li>What is your current usage (space and inodes) for your home directory?</li>
+<li>What are the soft limits for each of them?</li>
+<li>How does it compare to the <a href="https://hpc-docs.uni.lu/filesystems/quotas/">Uni.lu HPC documentation on Quotas</a>?</li>
+<li>How much represents your current usage as a percentage in comparison to the whole storage of the home filesystem?</li>
+</ul>
+<p>Take screenshots of the commands you ran to get the answers and add them to your report 📸.</p>
+<p>Note: Run <code>df-ulhpc -h</code> to find out the command line options.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title"><code>df-ulhpc</code> is only available on the Uni.lu HPC platforms</p>
+<p>The <code>df-ulhpc</code> command is a small script that summarizes the quota from different filesystems. This specific command is only available on the Uni.lu HPC platforms. On the MeluXnia supercomputer, you can use the command <code>myquota</code> for a similar result.</p>
+<p>In the back, these scripts rely on the quota commands specific to each file system, for example:
+- <code>lfs quota</code> for Lustre filesystems;
+- <code>mmlsquota</code> for GPFS filesystems.</p>
+</div>
+<h3 id="directories-and-file-usage">Directories and File Usage</h3>
+<p>The tools <code>du</code> and <code>ncdu</code> can show the disk and inode usage of specific files and directories (recursively).</p>
+<ul>
+<li><strong>du (Disk Usage)</strong>: The <code>du</code> command is a standard Linux/Unix utility that provides information on disk usage. It’s typically used to measure the space taken up by files and directories on a filesystem. Here are some common options you can use with du:<ul>
+<li><code>-h</code> or <code>--human-readable</code>: Display sizes in a human-readable format (e.g., KB, MB, GB).</li>
+<li><code>-s</code> or <code>--summarize</code>: Provide a summary of the total space used by the specified directory, rather than listing individual files.</li>
+<li><code>-a</code> or <code>--all</code>: Include all files and directories in the output.</li>
+<li>Check for more options on the manpage: <code>man du</code> or <a href="https://man.cx/">online</a>.</li>
+</ul>
+</li>
+<li><strong>ncdu (NCurses Disk Usage)</strong>: <code>ncdu</code> is a disk usage analyzer with a ncurses interface, which provides a text-based graphical user interface to navigate through the files and directories while showing their sizes. It’s an alternative to du with a more interactive experience. Key features include:<ul>
+<li>An interactive interface to browse directories and their sizes.</li>
+<li>Options to sort files/directories by size and delete them directly from the interface3.</li>
+<li>Ability to export and import scan results, which is useful for analyzing disk usage at different times or on different systems4.</li>
+</ul>
+</li>
+</ul>
+<p>Both tools are very useful for users and sysadmins looking to manage disk space efficiently.</p>
+<div class="admonition question">
+<p class="admonition-title">Question 4: Usage of your home directory</p>
+<p>Use <code>du</code> to find the current disk and inodes usage of your home directory. Write down the commands and usage in your report.</p>
+<p>Does it match the values returned by the <code>df-ulhpc</code> command?</p>
+</div>
+<h2 id="part-2-data-integrity">🔵 Part 2: Data Integrity</h2>
+<p><img align="right" alt="Certified File" src="../images/certified_file.png" /></p>
+<div class="admonition quote">
+<p>The integrity of data files is critical for the verifiability of computational and lab-based analyses. The way to seal a data file's content at a point in time is to generate a checksum. A checksum is a small-sized datum generated by running an algorithm, called a cryptographic hash function, on a file. As long as a data file does not  change, the calculation of the checksum will always result in the same datum. If you recalculate the checksum and it is different from a past calculation, then you know the file has been <strong>altered</strong> or <strong>corrupted</strong> in some way.</p>
+<p>Below are typical situations that call for checksum generation:</p>
+<ul>
+<li>A data file has been newly downloaded or received from a collaborator.</li>
+<li>You have copied data files to a new storage location, for instance, you moved data from your local computer to HPC to start an analysis. You want to create a snapshot of your data, for instance when you’re creating a supplementary material folder for a paper/report.</li>
+</ul>
+<p>&mdash; <cite><a href="https://howto.lcsb.uni.lu/external/integrity/checksum/">LCSB How-to Cards</a></cite></p>
+</div>
+<p>A <a href="https://en.wikipedia.org/wiki/Hash_function"><strong>hash function</strong></a> is a mathematical algorithm that converts an input (e.g. a file content) into a (short) fixed-size string of characters, which is typically a sequence of numbers and letters known as a hash value or digest. Hash functions are used to verify the integrity of data in files by generating a hash value for the original data and then comparing this hash value with a hash generated from the received data. If the two hash values match, it indicates that the data has not been altered; if they do not match, it suggests that the data may have been compromised.</p>
+<details class="info">
+<summary>Properties of a good hash function</summary>
+<p>The properties of a good hash function include:</p>
+<ul>
+<li><strong>Consistency</strong>: The same input will always produce the same hash value.</li>
+<li><strong>Uniqueness</strong>: Different inputs will produce unique hash values (with a very low probability of collisions).</li>
+<li><strong>Speed</strong>: The function generates the hash quickly, regardless of the size of the input.</li>
+<li><strong>Irreversibility</strong>: It’s computationally infeasible to reverse the hash value to find the original input.</li>
+</ul>
+<p>For more information, check the <a href="https://en.wikipedia.org/wiki/Hash_function#Properties">Wikipedia page</a>.</p>
+</details>
+<h3 id="sha-hash">SHA hash</h3>
+<p>SHA is short for <a href="https://en.wikipedia.org/wiki/SHA-2">Secure Hash Algorithm</a>. Several versions of SHA have been developed over time: SHA-1, SHA-2 and SHA-3. SHA-2 is a whole family of algorithms that create hash values of different lengths.
+The most commonly used version and the one recommended by the National Institute of Standards and Technology (NIST) is <strong>SHA-256</strong>, which creates a hash value of 256 bits.</p>
+<p>Let's start with a short example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a new file</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Happy secure computing!&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>message.txt
+<span class="c1"># Compute the SHA-256 checksum of the file</span>
+sha256sum<span class="w"> </span>message.txt
+</code></pre></div>
+<p>If you created the exact same file, the output should be
+<div class="highlight"><pre><span></span><code>40d61ef3ba32cc17f2c90db65e6c4d884d220b1999cbded7e80988541c9db11b  message.txt
+</code></pre></div></p>
+<p>The checksum can be stored in a file to be re-used later to <strong>verify</strong> the integrity of the file.
+<div class="highlight"><pre><span></span><code><span class="c1"># Save the checksum</span>
+sha256sum<span class="w"> </span>message.txt<span class="w"> </span>&gt;<span class="w"> </span>message.sha256
+<span class="c1"># Verify the file against the checksum</span>
+sha256sum<span class="w"> </span>-c<span class="w"> </span>message.sha256
+</code></pre></div></p>
+<p>If the file has not been modified, the output should be </p>
+<div class="highlight"><pre><span></span><code>message.txt: OK
+</code></pre></div>
+<p>Let's modify the file and see what happens to the checksum:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This file has been changed.&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>message.txt
+sha256sum<span class="w"> </span>message.txt
+sha256sum<span class="w"> </span>-c<span class="w"> </span>message.sha256
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Question 5: Checksum verification of <code>message.txt</code></p>
+<p>What is the new checksum for the <code>message.txt</code> file?
+What is the output of the <code>sha256sum -c</code> command?</p>
+<p>Just take a screenshot of the output and add it to your report 📸.</p>
+</div>
+<h3 id="md5-hash">MD5 hash</h3>
+<div class="admonition quote">
+<p>The <strong>MD5 message-digest algorithm</strong> is a widely used hash function producing a 128-bit hash value. Although MD5 was initially designed to be used as a cryptographic hash function, it has been found to suffer from extensive vulnerabilities. It can still be used as a <a href="https://en.wikipedia.org/wiki/Checksum">checksum</a> to verify data integrity, but only against unintentional corruption.</p>
+<p>&mdash; <cite><a href="https://en.wikipedia.org/wiki/MD5">Wikipedia - MD5</a></cite></p>
+</div>
+<div class="admonition quote">
+<p>(...) it should not be relied on if there is a chance that  files have been purposefully and maliciously tampered. In the latter case, the use of a newer hashing tool such as <a href="https://en.wikipedia.org/wiki/Sha256sum">sha256sum</a> is recommended.</p>
+<p>&mdash; <cite><a href="https://en.wikipedia.org/wiki/Md5sum">Wikipedia - Md5sum</a></cite></p>
+</div>
+<p>We can create the MD5 checksum with the following command:</p>
+<div class="highlight"><pre><span></span><code>md5sum message.txt &gt; message.md5
+</code></pre></div>
+<p>We can verify the file against the checksum similar to the above:</p>
+<div class="highlight"><pre><span></span><code>md5sum -c message.md5
+message.txt: OK
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Question 6: SHA-256 vs MD5?</p>
+<p>Between the two hashing tools <code>sha256sum</code> and <code>md5sum</code>, which one should you prefer to use? Why?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question 7: Checksum verification and update</p>
+<ol>
+<li>
+<p>Go to the <code>data_integrity</code> directory of your GitHub Classroom repository and verify the SHA-256 and MD5 checksums.
+    Which files have been modified since the creation of the checksums?</p>
+</li>
+<li>
+<p>Re-generate the checksums for the three files <code>hello.cpp</code>, <code>hello_mpi.cpp</code> and <code>README.md</code> and update the checksum files. Commit and push the modified checksum files.</p>
+</li>
+</ol>
+</div>
+<h2 id="part-3-data-encryption">🔵 Part 3: Data Encryption</h2>
+<p>File encryption is a security process that involves converting sensitive information into encoded data to prevent unauthorized access. It’s a e effective measure to protect sensitive data that ensures only those with the correct key or password can access the content of the files.</p>
+<p>How file encryption works:</p>
+<ul>
+<li><strong>Encoding</strong>: The original file is encoded using an algorithm, transforming readable data into an unreadable format.</li>
+<li><strong>Keys</strong>: This process generates a key, which could be a password or a set of characters, that will be used to decrypt the file.</li>
+<li><strong>Decryption</strong>: The recipient, who has the key, can then decrypt the file to revert it to its original, readable state.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Important Notice</p>
+<ul>
+<li>Encryption keys and passphrases need to be kept safe and protected from unauthorised access.</li>
+<li>Losing your encryption key means losing your data.</li>
+<li>Ensure you have an off-site backup of critical data stored on the platform under encryption.</li>
+<li>(Disaster) recovery of encrypted data is not guaranteed to be viable, depending on internal consistency when the recovery snapshot is taken.</li>
+</ul>
+</div>
+<p>In this part, you will practice with two encryption tools: <strong>GPG</strong> and <strong>Gocryptfs</strong>.</p>
+<h3 id="gpg">GPG</h3>
+<p><img align="right" alt="GPG" src="../images/logo-gnupg.png" /></p>
+<p><a href="https://www.gnupg.org/">GPG</a>, short for GNU Privacy Guard, is a free encryption software that implements the OpenPGP standard. It allows users to encrypt and sign their data and communications, providing a secure method of transferring sensitive information over the internet. It is widely used for secure communication (e.g. emails), data storage, and ensuring the authenticity of transmitted information. </p>
+<h4 id="encryption-with-a-passphrase">Encryption with a passphrase</h4>
+<p>We can encrypt our test file using GPG with the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Encrypt the file</span>
+gpg<span class="w"> </span>-c<span class="w"> </span>message.txt
+<span class="c1"># Delete the original file</span>
+rm<span class="w"> </span>message.txt
+</code></pre></div>
+<p>Since you did not specify with what to encrypt your file, GPG will ask for a <strong>passphrase</strong>. Enter twice the same passphrase and make sure you remember it (in this case at least until the next step). This will create the encrypted file <code>message.txt.gpg</code> next to the unencrypted file, so let us delete the unencrypted file:</p>
+<p>You can decrypt the file  with the following command:</p>
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>-o<span class="w"> </span>message.txt<span class="w"> </span>-d<span class="w"> </span>message.txt.gpg
+</code></pre></div>
+<p>Did you notice? GPG did not ask you for the passphrase to decrypt the file.
+Indeed, this is because GPG cached the passphrase in memory for the current SSH session.
+If you disconnect and connect again, GPG will require the passphrase to decrypt the file.</p>
+<p>Alternatively, you can kill the GPG agent that keeps the passphrase in memory and try to decrypt the file again:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Kill the GPG agent</span>
+killall<span class="w"> </span>gpg-agent
+<span class="c1"># Decrypt the file</span>
+gpg<span class="w"> </span>-o<span class="w"> </span>message.txt<span class="w"> </span>-d<span class="w"> </span>message.txt.gpg
+</code></pre></div>
+<p>Can you see the content of the file after decryption?</p>
+<div class="admonition question">
+<p class="admonition-title">Question 8: Decrypt the secret message</p>
+<p>Go to the directory <code>gpg_encryption_with_passphrase</code> and decrypt the file <code>secret_message.txt.gpg</code>. The passphrase is <code>HPC</code>.</p>
+<p>What is the content of the secret message?</p>
+</div>
+<h4 id="using-gpg-keys">Using GPG keys</h4>
+<div class="admonition info">
+<p class="admonition-title">A short introduction to public key cryptography</p>
+<p>Public key cryptography, also known as <strong>asymmetric cryptography</strong>, is a cryptographic system that uses pairs of keys: public keys, which may be disseminated widely, and private keys, which are known only to the owner. This system enables secure data transmission and digital signatures, which are essential for online security and privacy.</p>
+<p><img align="right" alt="Public key encryption" src="../images/public_key_encryption.png" /></p>
+<p>Key components of public key cryptography:</p>
+<ul>
+<li><strong>Public Key</strong>: Used to encrypt data or verify a signature. It’s safe to share with everyone.</li>
+<li><strong>Private Key</strong>: Used to decrypt data or create a signature. It must be kept secret.</li>
+</ul>
+<p>How it works:</p>
+<ul>
+<li><strong>Encryption</strong>: A sender encrypts the message with the recipient’s public key.</li>
+<li><strong>Decryption</strong>: The recipient decrypts the message with their private key.</li>
+</ul>
+<blockquote>
+<p>In an asymmetric key encryption scheme, anyone can encrypt messages using a public key, but only the holder of the paired private key can decrypt such a message. The security of the system depends on the secrecy of the private key, which must not become known to any other.</p>
+</blockquote>
+<p>&mdash; <cite><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Wikipedia - Public-key cryptography</a></cite></p>
+</div>
+<p>Instead of using a passphrase, you can also encrypt files using an <strong>encryption key</strong>. 
+The advantage of using encryption keys is that you never have to share a secret (e.g. the passphrase or the private).</p>
+<p>For this part, you will have to send a file to your teacher after encrypting it with his key.
+As explained above, you will need your own private key and the public of your teacher.</p>
+<ol>
+<li>
+<p>Create an encryption key with GPG using the following command:
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--gen-key
+</code></pre></div></p>
+</li>
+<li>
+<p>Go to the <code>gpg_encryption_with_key</code> directory, and import the public key of the teacher
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--import<span class="w"> </span>xavier-besseron.key
+</code></pre></div></p>
+</li>
+<li>
+<p>List your available keys
+<div class="highlight"><pre><span></span><code><span class="c1"># List public keys</span>
+gpg<span class="w"> </span>--list-keys
+<span class="c1"># List private keys</span>
+gpg<span class="w"> </span>--list-secret-keys
+</code></pre></div>
+You should see at least two public keys (one for you and one for your teacher) and one private key (for you).</p>
+</li>
+<li>
+<p>Create a file with a message to your teacher (by creative 😀)
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2"> finds that HPC is great|boring|complicated|...!&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>my_message.txt
+</code></pre></div></p>
+</li>
+<li>
+<p>Encrypt the file for your teacher. 
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--encrypt<span class="w"> </span>--sign<span class="w"> </span>--recipient<span class="w"> </span>xavier.besseron@uni.lu<span class="w"> </span>my_message.txt
+</code></pre></div></p>
+</li>
+</ol>
+<div class="admonition question">
+<p class="admonition-title">Question 9: Send an encrypted message to your teacher</p>
+<p>After following the instructions above add the encrypted file <code>my_message.txt.gpg</code> containing your message to the <code>gpg_encryption_with_key</code> directory of your GitHub Classroom repository.</p>
+</div>
+<p>Your teacher will decrypt the file with the command. Because it was encrypted with his public key, only he can decrypt using his private key.
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--decrypt<span class="w"> </span>my_message.txt.gpg
+</code></pre></div></p>
+<p>If you are going to transfer confidential data to someone else, you can share your public key of the recipient.
+For that, you can export your public key in a file (as done for you by your teacher) or upload your public key to a public keyserver.
+But remember: never share, upload or transfer private keys!</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Export your public key to a file</span>
+gpg<span class="w"> </span>--output<span class="w"> </span>firstname-lastname.key<span class="w"> </span>--armor<span class="w"> </span>--export<span class="w"> </span>email@uni.lu
+<span class="c1"># Upload your public key to a server</span>
+<span class="c1"># - KEY_ID from gpg --list-keys output</span>
+<span class="c1"># - Choose your keyserver, for example, openpgp.circl.lu</span>
+gpg<span class="w"> </span>--keyserver<span class="w"> </span>keyserver.example.com<span class="w"> </span>--send-keys<span class="w"> </span>KEY_ID
+</code></pre></div>
+<h3 id="gocryptfs">Gocryptfs</h3>
+<p>Gocryptfs is a modern implementation of an encryption overlay filesystem.
+For more details on its inner workings, see the following:</p>
+<p><img align="right" alt="gocryptfs" src="../images/logo-gocryptfs.png" /></p>
+<ul>
+<li><a href="https://nuetzlich.net/gocryptfs/forward_mode_crypto/">Security design documentation</a></li>
+<li><a href="https://nuetzlich.net/gocryptfs/threat_model/">Threat model</a></li>
+<li><a href="https://defuse.ca/audits/gocryptfs.htm">2017 security audit</a>, <a href="https://defuse.ca/downloads/audits/gocryptfs-cryptography-design-audit.pdf">Audit report as PDF</a></li>
+<li><a href="https://github.com/rfjakob/gocryptfs">Gocryptfs source code</a></li>
+</ul>
+<p>To use gocryptfs on the HPC platform you need to do the following steps:</p>
+<h4 id="1-load-the-gocryptfs-module">1. Load the gocryptfs module</h4>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>tools/gocryptfs
+</code></pre></div>
+<h4 id="2-create-two-folders">2. Create two folders:</h4>
+<ul>
+<li><code>dir.crypt</code>, which will act as the storage for the encrypted files (let’s call it <em>crypt</em>)</li>
+<li><code>dir</code>, which will present (on demand) the unencrypted view (let’s call it <em>view</em>)</li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>dir.crypt<span class="w"> </span>dir
+</code></pre></div>
+<details class="info">
+<summary>gocryptfs does work on the Lustre filesystem</summary>
+<p>Currently gocryptfs does not work well on the Lustre filesystem (<code>$SCRATCH</code>). 
+You need to specify the additional option <code>-noprealloc</code> to use it on Lustre. 
+It works well on SpectrumScale/GPFS (<code>$HOME</code> and project directories), though.</p>
+</details>
+<h4 id="3-initialize-the-crypt-folder-with-a-password">3. Initialize the <em>crypt</em> folder with a password</h4>
+<p>Command:</p>
+<div class="highlight"><pre><span></span><code>gocryptfs<span class="w"> </span>-init<span class="w"> </span>dir.crypt
+</code></pre></div>
+<p>Terminal output:</p>
+<div class="highlight"><pre><span></span><code>Choose a password for protecting your files.
+Password:
+Repeat:
+
+Your master key is:
+
+e1ecdcf1-6bcebaa0-cbe6cfb8-8e27d4ad-
+acefb9d4-bd98de59-311d1898-31d7e4e4
+
+If the gocryptfs.conf file becomes corrupted or you ever forget your password, there is only one hope for recovery: The master key. Print it to a piece of paper and store it in a drawer. This message is only printed once.
+
+The gocryptfs filesystem has been created successfully.
+You can now mount it using: gocryptfs dir.crypt MOUNTPOINT
+</code></pre></div>
+<p>On <em>crypt</em> store initialization, gocryptfs provides us with the master key that can be used to restore access to the data files, especially useful in case the password is lost. You should keep the master key safe, never store it unencrypted on the platform itself!</p>
+<p>After initialization, the <em>crypt</em> store contains two internal configuration files:</p>
+<ul>
+<li><code>gocryptfs.conf</code> is the global configuration for the <em>crypt</em> store, while</li>
+<li><code>gocryptfs.diriv</code> is created per-directory for encryption of file names</li>
+</ul>
+<p>Note that you should never modify (any) files within the <em>crypt</em> store.</p>
+<h4 id="4-mount-the-crypt-folder-into-the-view-folder">4. Mount the <em>crypt</em> folder into the <em>view</em> folder</h4>
+<p>To be able to access/store data, the <em>crypt</em> store needs to be mounted in the <em>view</em> folder</p>
+<ul>
+<li>this can be done by supplying the initially set password when requested</li>
+<li>or from a file with <code>-passfile</code> option (it means that you have stored your password unencrypted on the filesystem - <strong>this is then a security risk!</strong>)</li>
+<li>or with the generated master key, with the <code>-masterkey</code> option (then you should be in a <strong>full-node or exclusive job reservation</strong> such that there are no other users able to see the master key in the system)</li>
+</ul>
+<div class="highlight"><pre><span></span><code>gocryptfs<span class="w"> </span>dir.crypt<span class="w"> </span>dir
+</code></pre></div>
+<p>Terminal output:</p>
+<div class="highlight"><pre><span></span><code>Password:
+Decrypting master key
+Filesystem mounted and ready.
+(node)$&gt; ls dir
+</code></pre></div>
+<h4 id="5-add-files-to-the-view-folder">5. Add files to the <em>view</em> folder</h4>
+<p>All your processing (new file/folder creation, modification and transfers) will happen in the <em>view</em> folder.</p>
+<p>Once the <em>crypt</em> store is mounted in the <em>view</em> directory we can create files in the latter:</p>
+<ul>
+<li>any folder/file created in the unencrypted view will have a one-to-one correspondence in the <em>crypt</em> store</li>
+<li>the plain text <code>message.txt</code> file is stored in an encrypted format (e.g., <code>EUff4Ynj82oDk-_CwuAgJA</code>) in the underlying <em>crypt</em> store (file name metadata is encrypted as well)</li>
+<li>the same permissions applied on <code>message.txt</code> are also set for its encrypted correspondent file</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Happy secure computing&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>dir/message.txt
+</code></pre></div>
+<p>We can see the clear files in <code>dir</code> and their encrypted versions in <code>dir.crypt</code>:</p>
+<p><img alt="gocryptfs file layout" class="center" src="../images/gocryptfs_layout.png" /></p>
+<h4 id="6-unmount-the-view-folder">6. Unmount the <em>view</em> folder</h4>
+<p>At the end of our processing, we are using <code>fusermount</code> explicitly to unmount the encrypted overlay, such that the unencrypted view of your data is closed and data is flushed to the regular filesystem. Note that you should always ensure that this happens before your job reservation expires.</p>
+<div class="highlight"><pre><span></span><code>fusermount<span class="w"> </span>-u<span class="w"> </span>dir
+</code></pre></div>
+<p>After unmounting, only the encrypted files are visible:</p>
+<p><img alt="gocryptfs file layout" class="center" src="../images/gocryptfs_layout_unmounted.png" /></p>
+<details class="warning">
+<summary>Other important details</summary>
+<ul>
+<li>
+<p>Data stored in a <em>crypt</em> store should not be used concurrently (e.g. by multiple users at the same time). The <a href="https://github.com/rfjakob/gocryptfs/blob/master/Documentation/MANPAGE.md#-sharedstorage">special option</a> <code>-sharedstorage</code> exists for this use-case, but is not guaranteed to work for all applications.</p>
+</li>
+<li>
+<p>(Parallel) Applications ran through <code>srun</code>  on the Iris cluster cannot "see" the unencrypted <em>view</em> folder as they are run in a different context.
+This is also the case if you use <code>sjoin</code> or <code>srun --jobid</code> to attach your terminal to a running job.</p>
+</li>
+<li>
+<p>The <code>-init</code> command has an option <code>-plaintextnames</code> to preserve file names.</p>
+</li>
+</ul>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question 10: Opening a gocryptfs directory</p>
+<p>For this question, you have to use an existing gocryptfs filesystem (no need to initialize it).</p>
+<ol>
+<li>Go to the <code>gocryptfs</code> directory of your GitHub Classroom repository</li>
+<li>Use <code>gocryptfs</code> to mount the encrypted filesystem from the <code>dir.crypt</code> directory to the <code>dir</code> directory (create <code>dir</code> if necessary). The password to open this filesystem is <code>HPC</code>.</li>
+<li>Open the decrypted file <code>the_answer.txt</code></li>
+</ol>
+<p>Answer in your report:</p>
+<ul>
+<li>What is the content of the file <code>the_answer.txt</code>?</li>
+<li>What is the filename of the encrypted file corresponding to <code>the_answer.txt</code>?</li>
+</ul>
+</div>
+<hr />
+<h2 id="part-4-reproducibility">🔵 Part 4: Reproducibility</h2>
+<p>This part demonstrates potential issues with reproducibility based on short snippets of code in R and shell.
+They are located in the <code>reproducibility</code> directory of your GitHub Classroom repository.</p>
+<p>To run the R scripts provided, you will have to load the module of <strong>R</strong> and then use the <code>Rscript</code> command:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Load the R module (only once)</span>
+module<span class="w"> </span>load<span class="w"> </span>lang/R/4.0.5-foss-2020b
+<span class="c1"># Run an R script</span>
+Rscript<span class="w"> </span>--vanilla<span class="w"> </span>scriptname<span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
+</code></pre></div>
+<p>R scripts 1 and 3 accept user input. Run them with <code>--help</code> to get the list of parameters.</p>
+<details class="warning">
+<summary>R libraries required</summary>
+<p>R scripts 1 and 3  require <code>optparse</code>, <code>ggplot2</code> and <code>magrittr</code> libraries. If they are not installed on your instance, install them manually or uncomment the code in the R script responsible for package installation. This may make the scripts run a bit slower.</p>
+</details>
+<h3 id="prng-seed-initialisation">(P)RNG seed initialisation</h3>
+<p>In many cases, you will need to sample a set of random numbers from a given distribution. In most cases, you will use a <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">pseudo-random number generator (PRNG)</a>. Read about the properties of PRNGs, and what is the role of a <strong>seed</strong>.</p>
+<p>Run the <code>1_reproducibility_in.R</code> script from the command line and examine its outputs. The script generates 100 numbers from the normal distribution, plots them and calculates sample quantiles. Run the script multiple times.</p>
+<ul>
+<li>Note that the randomly generated sample changes between runs.</li>
+<li>Set the seed parameter. </li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Question 11: (P)RNG seed initialisation</p>
+<p>Answer these questions in your report:</p>
+<ul>
+<li>What changes when you set the seed? Why?</li>
+<li>Why is it important for reproducibility?</li>
+</ul>
+</div>
+<h3 id="locale">Locale</h3>
+<div class="admonition info">
+<p class="admonition-title">What is a locale?</p>
+<p>In UNIX systems, a <strong>locale</strong> is a set of environmental variables that defines the language, country, and character encoding settings (or specifically the LC_* environment variables) for your applications and shell session on a per-user basis.</p>
+<p>It affects many standard library functions of the operating system and influences the way your programs behave on your system, especially in terms of language, currency, time and date formats, and character encoding. For example, the locale settings include aspects such as:</p>
+<ul>
+<li><strong>LC_NUMERIC</strong>: It sets the conventions used for number formatting.</li>
+<li><strong>LC_CTYPE</strong>: It determines the interpretation of characters and the behavior of character classes within regular expressions.</li>
+<li><strong>LC_TIME</strong>: It specifies the format of date and time.</li>
+<li><strong>LC_COLLATE</strong>: This defines how string comparison is performed.</li>
+<li><strong>LC_MONETARY</strong>: It determines the style for formatting monetary values.</li>
+<li><strong>LC_MESSAGES</strong>: It influences the language in which messages are displayed.</li>
+<li><strong>LC_ALL</strong>: This variable determines the values for all locale categories. It has the highest priority and can override other settings.</li>
+</ul>
+<p><strong>The locale settings may affect the way datasets are stored and processed, and thus affect the behavior of your applications and system.</strong></p>
+<p>More information on [The Open Group Base Specifications](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap07.html] and on <a href="https://en.wikipedia.org/wiki/Locale_(computer_software)">Wikipedia</a>.</p>
+</div>
+<p>Run the <code>2_locale.sh</code> script, examine its contents and outputs. Note different print behaviours depending on US or ES locales, and different fraction separators.</p>
+<div class="admonition question">
+<p class="admonition-title">Question 12: Difference of behavior between US and ES locales</p>
+<p>Compare and explain the script behaviour on HPC and your local machine. Are they similar?</p>
+</div>
+<p>Run the <code>2_reproducibility_in.R</code> script from the command line and examine its outputs. The script reads the <code>./data/calificationes.tsv</code> table and attempts to calculate the mean of the scores the students got.</p>
+<div class="admonition question">
+<p class="admonition-title">Question 13: Difference of behavior between US and ES locales</p>
+<ul>
+<li>Why is the script failing to calculate the mean? (a hint in the code)</li>
+<li>What would be your approach to harmonise data processing in an international project?</li>
+</ul>
+</div>
+<h3 id="precision-errors">Precision errors</h3>
+<p>Especially in simulations, floating point operations can cause reproducibility issues. This <a href="https://riskledger.com/resources/floating-point-numbers">blog post</a> is a nice introduction to the topic.</p>
+<p>Run the R script <code>3_reproducibility_in.R</code> and examine its outputs.</p>
+<ul>
+<li>Focus on the first part: See that seemingly identical numbers are actually different.</li>
+<li>Focus on the second part: Examine the difference between two executions of the same function, and how the calculation error evolves with the number of iterations. You can have a look at the generated plot <code>Rplot.pdf</code> to help you.</li>
+</ul>
+<details class="warning">
+<summary>Print precision in R</summary>
+<p>R allows to print up to 22 significant digits, anything above gets automatically rounded.</p>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question 14: Precision errors</p>
+<ul>
+<li>In which situations are such errors negligible?</li>
+<li>How would you ensure the reproducibility of a complex simulation, involving multiple floating point operations?</li>
+<li>How would you identify potential errors?</li>
+</ul>
+</div>
+<hr />
+<h2 id="report-submission">🔵 Report submission</h2>
+<p>Don't forget to add and push all the required files to your GitHub Classroom repository:</p>
+<ul>
+<li>the requested files;</li>
+<li>the report, including the answers to all the questions and the screenshots.</li>
+</ul>
+<p>Don't add any other files and directories (for example, build directories, executables, Makefile, etc.).
+Finalize your report and save it as a PDF (no other format allowed!) in the <code>report</code> sub-directory of your GitHub Classroom repository.</p>
+<details class="tip">
+<summary>Uploading your report</summary>
+<p>You don't need to copy it to the HPC to upload your report. Instead, you can use the <strong>Add file</strong> button directly on the GitHub webpage.</p>
+</details>
+<div class="admonition danger">
+<p class="admonition-title">Files Submission</p>
+<p>Your files and report are considered submitted once they are pushed to your repository.</p>
+<p>Check your GitHub repository online to make sure:
+<a href="https://github.com/MHPC-HPCSoftwareEnvironment/w10-data-management-and-reproducibility-XXX">https://github.com/MHPC-HPCSoftwareEnvironment/w10-data-management-and-reproducibility-XXX</a></p>
+<p>Passed the deadline at <strong>06/05/2024 23h59</strong> you won't be able to push anymore.</p>
+</div>
+<hr />
+<h2 id="additional-resources">🔵 Additional Resources</h2>
+<h3 id="hashing-algorithms-and-checksums">Hashing Algorithms and Checksums</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Hash_function">Wikipedia - Hash function</a></li>
+<li><a href="https://en.wikipedia.org/wiki/MD5">Wikipedia - MD5</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Md5sum">Wikipedia - Md5sum</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SHA-2">Wikipedia - SHA-2</a></li>
+<li><a href="https://howto.lcsb.uni.lu/external/integrity/checksum/">LCSB How-to Card on Checksums</a></li>
+</ul>
+<h3 id="encryption">Encryption</h3>
+<ul>
+<li><a href="https://howto.lcsb.uni.lu/external/integrity/encryption/file/">LCSB How-to Card on Encryption</a></li>
+<li><a href="https://hpc.uni.lu/blog/2018/sensitive-data-encryption-using-gocryptfs/">UL HPC blog post on Sensitive Data Encryption</a></li>
+</ul>
+<h3 id="sources-for-the-practical">Sources for the practical</h3>
+<ul>
+<li><a href="https://hpc.uni.lu/old/blog/2018/sensitive-data-encryption-using-gocryptfs/">Data Management on UL HPC Facility (2023)</a></li>
+<li><a href="https://hpc.uni.lu/old/blog/2018/sensitive-data-encryption-using-gocryptfs/">Sensitive Data Encryption Using Gocryptfs (2018)</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../js/open_in_new_tab.js"></script>
+      
+    
+  </body>
+</html>
